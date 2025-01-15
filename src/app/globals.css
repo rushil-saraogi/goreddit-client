@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Tooltip styles */
+.tooltip-box { 
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-box:hover .tooltip{
+  opacity: 1;
+}
+
+.tooltip { 
+  color: #ffffff;
+  text-align: center;
+  padding: 5px;
+  border-radius: 2px;
+  width: 100px;
+  opacity: 0;
+  transition: opacity 0.4s;
+  position: absolute;
+  z-index: 1;
+  background: #000;
+}
+
+.left {
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+  margin-right: 10px;
+}
+
+.right {
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  margin-left: 10px;
+}
+
+.bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+}
+/* Tooltip styles end */
