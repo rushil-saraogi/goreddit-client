@@ -51,8 +51,8 @@ export default ({ Name, PriceRangeLower, PriceRangeUpper, ID }: Brand) => {
         <div className="absolute bottom-2 right-2 flex gap-1">
           {brandMetaData[Name].tags.map((tag, i) => (
             <Tooltip key={i} text={tag} position="left">
-              <div className={`h-8 w-8 flex items-center justify-center rounded-full ${brandTagColors[tag]}`}>
-                <span className="material-symbols-outlined text-white">{brandTagIcons[tag]}</span>
+              <div className={`h-6 w-6 flex items-center justify-center rounded-full ${brandTagColors[tag]}`}>
+                <span className="material-symbols-outlined text-white text-sm">{brandTagIcons[tag]}</span>
               </div>
             </Tooltip>
           ))}
