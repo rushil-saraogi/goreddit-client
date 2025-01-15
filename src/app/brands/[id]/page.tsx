@@ -2,7 +2,7 @@ import Image from "next/image";
 import WatchExPostType from "@/types/WatchExPost";
 import { brandMetaData } from "@/util/brand";
 import { getPostsForBrand } from "@/api/posts";
-import { getBrand, getBrands } from "@/api/brands";
+import { getBrand } from "@/api/brands";
 import PostCard from "@/components/PostCard";
 
 // Not using static build for now
