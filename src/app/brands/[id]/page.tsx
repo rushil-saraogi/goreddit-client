@@ -5,13 +5,14 @@ import { getPostsForBrand } from "@/api/posts";
 import { getBrand, getBrands } from "@/api/brands";
 import PostCard from "@/components/PostCard";
 
-export async function generateStaticParams() {
-  const brands = await getBrands();
+// Not using static build for now
+// export async function generateStaticParams() {
+//   const brands = await getBrands();
 
-  return brands.map((brand) => ({
-    id: brand.ID.toString(),
-  }));
-}
+//   return brands.map((brand) => ({
+//     id: brand.ID.toString(),
+//   }));
+// }
 
 export default async ({ params }: { params: Promise<{ id: string }> }) => {
   const id = (await params).id;
