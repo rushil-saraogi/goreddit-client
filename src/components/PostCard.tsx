@@ -30,6 +30,10 @@ export default ({ post }: { post: WatchExPost }) => {
       <Tag classes="absolute top-2 left-2">
         {cardDateFormat(post.PostTime).dateString}
       </Tag>
+
+      <div className="absolute p-8 transition h-full w-full flex items-center justify-center text-white text-sm text-center font-semibold bg-black bg-opacity-80 opacity-0 group-hover:opacity-100">
+        {post.Title}
+      </div>
     </a>
   );
 };
