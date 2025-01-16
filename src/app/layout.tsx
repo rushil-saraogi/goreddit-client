@@ -33,7 +33,7 @@ export default function RootLayout({
 
         <Navigation />
         
-        <div className="mt-8">
+        <div className="my-12">
           <Footer />
         </div>
       </body>

@@ -34,7 +34,7 @@ export default ({ Name, PriceRangeLower, PriceRangeUpper, ID }: Brand) => {
   return (
     <Link
       href={`/brands/${ID}`}
-      className="min-h-44 flex shadow-sm bg-white hover:bg-gray-100 transition items-center justify-center after:content rounded-lg relative cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight max-h-52">
+      className="min-h-52 flex shadow-sm bg-white hover:bg-gray-100 transition items-center justify-center after:content rounded-lg relative cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight">
       <Image
         src={`/logos/${Name}.png`}
         alt={Name}

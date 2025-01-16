@@ -18,7 +18,7 @@ const SlidingTabBar = ({ handleClick, tabs, activeTab }: { handleClick: Function
   }, [activeTabIndex]);
 
   return (
-    <div className="flew-row relative mx-auto flex h-12 rounded-3xl border border-black/40 bg-neutral-900 px-2 backdrop-blur-sm">
+    <div className="flew-row relative mx-auto flex h-16 rounded-3xl border border-black/40 bg-neutral-900 px-2 backdrop-blur-sm">
       <span
         className="absolute bottom-0 top-0 -z-10 flex overflow-hidden rounded-3xl py-2 transition-all duration-150"
         style={{ left: tabUnderlineLeft, width: tabUnderlineWidth }}
