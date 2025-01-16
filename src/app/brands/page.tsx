@@ -26,7 +26,7 @@ export default async function BrandPage() {
           />
           <h1 className="text-3xl font-bold font-mono mt-6">Brands</h1>
           <h2 className="mt-2">
-            A curated list of the world's best watch brands
+            A curated list of the world&apos;s most popular watch brands.
           </h2>
         </div>
         {sortedBrands.map((brand: Brand) => (

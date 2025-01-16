@@ -29,7 +29,7 @@ export default async function Home() {
             />
             <h1 className="text-3xl font-bold mt-6">Wristology</h1>
             <h2 className="mt-2">
-              A curated list of the world's best watches and where to find them
+              A curated list of the world&apos;s best watches and where to find them
             </h2>
           </div>
           {categories.map((category: Category, i: number) => (
@@ -50,7 +50,7 @@ export default async function Home() {
             />
             <h1 className="text-2xl font-bold mt-4">Collections</h1>
           </div>
-          {collections.map((collection: Collection, i: number) => (
+          {collections.map((collection: Collection) => (
             <div key={collection.ID}>
               <CollectionCard {...collection} />
             </div>
