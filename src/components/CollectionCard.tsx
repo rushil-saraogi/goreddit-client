@@ -1,11 +1,15 @@
 import Link from "next/link";
 import { Collection } from "@/types/Collection";
 
-export default ({ Name, ID }: Collection) => {
+type CollectionCardProps = Collection & {
+  classes?: string;
+}
+
+export default ({ Name, ID, classes }: CollectionCardProps) => {
   return (
     <Link
       href={`/collections/${ID}`}
-      className={`min-h-52 overflow-hidden bg-white/5 hover:bg-white/10 flex transition items-center justify-center after:content rounded-lg relative cursor-zoom-in`}
+      className={`min-h-52 overflow-hidden bg-gradient-to-br from-purple-500 via-indigo-500 to-blue-500 hover:opacity-80 flex transition items-center justify-center rounded-lg relative cursor-zoom-in ${classes}`}
     >
         <div className="text-white text-xl font-bold leading-5">{Name}</div>
     </Link>

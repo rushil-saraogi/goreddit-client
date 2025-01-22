@@ -23,7 +23,7 @@ const SlidingTabBar = ({ handleClick, tabs, activeTab }: { handleClick: Function
         className="absolute bottom-0 top-0 -z-10 flex overflow-hidden rounded-3xl py-2 transition-all duration-150"
         style={{ left: tabUnderlineLeft, width: tabUnderlineWidth }}
       >
-        <span className="h-full w-full rounded-3xl bg-gray-500/40" />
+        <span className="h-full w-full rounded-2xl bg-teal-600" />
       </span>
       {tabs.map((tab, index) => {
         const isActive = activeTabIndex === index;
@@ -34,7 +34,7 @@ const SlidingTabBar = ({ handleClick, tabs, activeTab }: { handleClick: Function
             ref={(el) => { tabsRef.current[index] = el; }}
             className={`${
               isActive ? `` : `hover:text-neutral-300`
-            } my-auto cursor-pointer select-none rounded-full px-4 text-center font-light text-white`}
+            } my-auto cursor-pointer select-none rounded-full px-4 text-center text-white`}
             onClick={() => { setActiveTabIndex(index); handleClick(tab.value) }}
           >
             {tab.name}

@@ -28,8 +28,8 @@ export default ({ Name, PriceRangeLower, PriceRangeUpper, ID }: Brand) => {
   }
 
   const brandTagColors = {
-    [brandTags.editor]: 'bg-rose-500',
-    [brandTags.microbrand]: 'bg-blue-500',
+    [brandTags.editor]: 'text-rose-500',
+    [brandTags.microbrand]: 'text-blue-500',
   }
   return (
     <Link
@@ -48,12 +48,10 @@ export default ({ Name, PriceRangeLower, PriceRangeUpper, ID }: Brand) => {
       </Tag>
 
       { brandMetaData[Name]?.tags && (
-        <div className="absolute bottom-2 right-2 flex gap-1">
+        <div className="absolute bottom-0 right-2 flex gap-1">
           {brandMetaData[Name].tags.map((tag, i) => (
             <Tooltip key={i} text={tag} position="left">
-              <div className={`h-6 w-6 flex items-center justify-center rounded-full ${brandTagColors[tag]}`}>
-                <span className="material-symbols-outlined text-white text-sm">{brandTagIcons[tag]}</span>
-              </div>
+                <span className={`material-symbols-outlined text-white ${brandTagColors[tag]}`}>{brandTagIcons[tag]}</span>
             </Tooltip>
           ))}
           

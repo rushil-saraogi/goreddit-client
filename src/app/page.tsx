@@ -16,7 +16,7 @@ export default async function Home() {
   // const filteredCategories = categories.filter((category) => !['Moonphase'].includes(category.Name));
 
   return (
-    <div className="min-h-screen mx-auto max-w-[1960px] p-4 font-[family-name:var(--font-geist-sans)]">
+    <div className="min-h-screen mx-auto max-w-[1960px] p-4">
       <main>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-6">
           <div className="col-span-1 row-span-3 flex flex-col items-center justify-center overflow-hidden rounded-lg bg-white/10 p-6 text-center text-white shadow-highlight sm:col-span-2 lg:col-span-2 lg:row-span-2">
@@ -27,7 +27,7 @@ export default async function Home() {
               width={90}
               height={90}
             />
-            <h1 className="text-3xl font-bold mt-6">Wristology</h1>
+            <h1 className="text-3xl font-bold mt-6">AskWinston</h1>
             <h2 className="mt-2">
               A curated list of the world&apos;s best watches and where to find them
             </h2>

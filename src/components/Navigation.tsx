@@ -36,6 +36,12 @@ export default function Navigation() {
     router.push(url);
   }
 
+  // Hide the navigation bar on the admin page
+  console.log(pathname);
+  if (pathname.startsWith("/admin")) {
+    return null;
+  }
+
   return (
     <nav className="fixed inset-x-0 max-w-max mx-auto bottom-10">
       <Tabs tabs={navTabs} handleClick={handleClick} activeTab={activeTab} />

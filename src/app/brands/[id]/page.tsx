@@ -22,7 +22,7 @@ export default async ({ params }: { params: Promise<{ id: string }> }) => {
   ]);
 
   return (
-    <div className="min-h-screen mx-auto max-w-[1960px] p-4 font-[family-name:var(--font-geist-sans)]">
+    <div className="min-h-screen mx-auto max-w-[1960px] p-4">
       <main className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         <div className="min-h-44 self-stretch col-span-1 row-span-3 flex items-center justify-center rounded-lg bg-white/90 p-6 text-center sm:col-span-2 lg:col-span-1 lg:row-span-2">
           <Image

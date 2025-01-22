@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'external-preview.redd.it'
+      },
+      {
+        protocol: 'https',
+        hostname: 'b.thumbs.redditmedia.com'
       }
     ],
   },
