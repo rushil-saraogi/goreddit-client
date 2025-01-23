@@ -43,7 +43,7 @@ export default function Navigation() {
   }
 
   return (
-    <nav className="fixed inset-x-0 max-w-max mx-auto bottom-10">
+    <nav className="fixed inset-x-0 max-w-max mx-auto bottom-3 sm:bottom-5 lg:bottom-10 z-10">
       <Tabs tabs={navTabs} handleClick={handleClick} activeTab={activeTab} />
     </nav>
   );

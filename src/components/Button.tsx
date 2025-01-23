@@ -7,10 +7,12 @@ export default ({
   type,
   children,
   href,
+  onClick
 }: {
-  type: ButtonTypes;
+  type?: ButtonTypes;
   children: React.ReactNode;
-  href: string;
+  href?: string;
+  onClick?: () => void;
 }) => {
   const baseClasses =
     "py-2 h-11 relative inline-flex items-center justify-center px-5 rounded-md font-semibold text-xs uppercase tracking-widest focus:outline-none focus:ring focus:ring-gray-300 disabled:opacity-25 transition";
@@ -33,7 +35,7 @@ export default ({
     link: linkClasses,
   };
 
-  const classString = `${baseClasses} ${classes[type]}`;
+  const classString = `${baseClasses} ${classes[type || 'primary']}`;
 
   return (
     <>
@@ -42,7 +44,7 @@ export default ({
             {children}
         </Link>
       ) : (
-        <button className={classString}>
+        <button className={classString} onClick={onClick}>
           {children}
         </button>
       )}

@@ -5,7 +5,6 @@ import React, { ChangeEventHandler, FC, InputHTMLAttributes } from 'react';
 interface InputGroupProps extends InputHTMLAttributes<HTMLInputElement> {
   isLoading?: boolean;
   value: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
   icon?: string;
   error?: string;
   className?: string;
@@ -22,8 +21,8 @@ const InputGroup: FC<InputGroupProps> = ({
   ...props
 }) => {
   // Determine additional input classes
-  const inputClasses = `focus:ring-indigo-500 focus:border-indigo-500 disabled:bg-gray-100 disabled:text-gray-500 block w-full pr-12 border-gray-300 rounded-md h-10 border ${
-    icon ? 'pl-11' : 'pl-4'
+  const inputClasses = `focus:ring-indigo-500 py-4 text-gray-800 focus:border-indigo-500 disabled:bg-gray-100 disabled:text-gray-500 block w-full pr-12 border-gray-300 rounded-md h-11 border ${
+    icon ? 'pl-11' : 'pl-3'
   } ${error ? 'border-red-500' : ''} ${className}`;
 
   return (
@@ -42,7 +41,7 @@ const InputGroup: FC<InputGroupProps> = ({
           {...props}
           className={inputClasses}
           value={value}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={onChange}
         />
         {/* Loader or slot content on the right */}
         <div className="absolute inset-y-0 right-0 flex items-center">

@@ -17,7 +17,7 @@ export default async function Latest() {
     <div className="flex justify-center w-full">
       <div className="flex flex-col gap-4">
         <div className="flex justify-end">
-          <Button type="secondary">Add Collection</Button>
+          <Button href="/admin/collections/new" type="secondary">Add Collection</Button>
         </div>
         <TableComponent
           data={collectionsData}

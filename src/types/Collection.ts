@@ -1,7 +1,7 @@
 export interface Collection {
-    ID: number;
+    ID?: number;
     Name: string;
-    Thumbnail: string;
-    Created: string;
-    Updated: string;
+    Thumbnail?: string;
+    Created?: string;
+    Updated?: string;
 }
