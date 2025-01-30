@@ -1,11 +1,11 @@
 import Image from "next/image";
 import WatchExPost from "@/types/WatchExPost";
 import Tag from "./Tag";
-import { cleanUrl, isValidUrl } from "@/util/URL";
+import { removeEscapedAmpersands, isValidUrl } from "@/util/URL";
 import { cardDateFormat } from "@/util/date";
 
 export default ({ post }: { post: WatchExPost }) => {
-  const cleanedUrl = cleanUrl(post.Thumbnail);
+  const cleanedUrl = removeEscapedAmpersands(post.Thumbnail);
   const urlIsValid = isValidUrl(cleanedUrl);
 
   return (
@@ -17,8 +17,8 @@ export default ({ post }: { post: WatchExPost }) => {
         <Image
           src={cleanedUrl}
           alt={post.Title}
-          width={100}
-          height={100}
+          width={200}
+          height={200}
           className="transform brightness-90 transition will-change-auto group-hover:brightness-110 w-full"
         />
       )}

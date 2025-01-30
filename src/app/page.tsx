@@ -13,7 +13,7 @@ export default async function Home() {
   ]);
 
   // Temporarily filter categories without posts
-  // const filteredCategories = categories.filter((category) => !['Moonphase'].includes(category.Name));
+  const filteredCategories = categories.filter((category) => !['Sector Dial'].includes(category.Name));
 
   return (
     <div className="min-h-screen mx-auto max-w-[1960px] p-4">
@@ -32,7 +32,7 @@ export default async function Home() {
               A curated list of the world&apos;s best watches and where to find them
             </h2>
           </div>
-          {categories.map((category: Category, i: number) => (
+          {filteredCategories.map((category: Category, i: number) => (
             <div key={category.ID}>
               <CategoryCard {...category} index={i} />
             </div>

@@ -42,6 +42,15 @@ export function post(url: string, body: any) {
     }).then(data => data.json());
 }
 
+export function del(url: string) {
+    return fetch(`${getApiUrl()}${url}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(data => data.json());
+}
+
 export function tableDateFormat(dateString: string): string {
     return new Date(dateString).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
 }

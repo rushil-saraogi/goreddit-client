@@ -7,12 +7,14 @@ export default ({
   type,
   children,
   href,
-  onClick
+  onClick,
+  loading,
 }: {
-  type?: ButtonTypes;
-  children: React.ReactNode;
-  href?: string;
-  onClick?: () => void;
+  type?: ButtonTypes,
+  children: React.ReactNode,
+  href?: string,
+  onClick?: () => void,
+  loading?: boolean
 }) => {
   const baseClasses =
     "py-2 h-11 relative inline-flex items-center justify-center px-5 rounded-md font-semibold text-xs uppercase tracking-widest focus:outline-none focus:ring focus:ring-gray-300 disabled:opacity-25 transition";
@@ -44,8 +46,8 @@ export default ({
             {children}
         </Link>
       ) : (
-        <button className={classString} onClick={onClick}>
-          {children}
+        <button className={classString} onClick={onClick} disabled={loading}>
+          { loading ? 'Loading...' : children }
         </button>
       )}
     </>

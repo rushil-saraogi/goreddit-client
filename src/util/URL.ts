@@ -1,4 +1,4 @@
-export function cleanUrl(url: string) {
+export function removeEscapedAmpersands(url: string) {
   return url.replace(/&amp;/g, "&");
 }
 

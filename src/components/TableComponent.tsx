@@ -1,7 +1,7 @@
 import { Collection } from "@/types/Collection";
 import { Product } from "@/types/Product";
 
-type TableData = Collection[] | Product[];
+type TableData = (Collection[] | Product[]) & { Actions?: React.ReactNode };
 
 export default ({ data = [] }: { data?: TableData }) => {
     if (!data.length) return null;
@@ -10,12 +10,12 @@ export default ({ data = [] }: { data?: TableData }) => {
     const tableDataArray = data.map(row => Object.values(row));
 
     return (
-        <div className="shadow-sm border overflow-hidden border-gray-200 sm:rounded-lg">
+        <div className="shadow-sm border border-gray-200 sm:rounded-lg">
             <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
+                <thead>
                     <tr>
                         {headers.map((header, i) =>(
-                            <th key={i} scope="col" className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider truncate">
+                            <th key={i} scope="col" className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider truncate bg-gray-100">
                                 { header }
                             </th>
                         ))}
@@ -26,7 +26,7 @@ export default ({ data = [] }: { data?: TableData }) => {
                     {tableDataArray.map((row, i) => (
                         <tr key={i} className="hover:bg-gray-50">
                             {row.map((cell, i) => (
-                                <td key={i} className="px-4 sm:px-6 py-4 whitespace-nowrap text-gray-700">
+                                <td key={i} className="px-4 sm:px-6 py-3 whitespace-nowrap text-gray-700">
                                     { cell }
                                 </td>
                             ))}
