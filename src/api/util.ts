@@ -32,6 +32,7 @@ export function get(url: string, invalidateCache: boolean = false) {
         .then(data => data.json());
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function post(url: string, body: any) {
     return fetch(`${getApiUrl()}${url}`, {
         method: 'POST',
@@ -42,6 +43,7 @@ export function post(url: string, body: any) {
     }).then(data => data.json());
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function put(url: string, body: any) {
     return fetch(`${getApiUrl()}${url}`, {
         method: 'PUT',

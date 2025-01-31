@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ChangeEventHandler, FC, InputHTMLAttributes } from 'react';
+import React, { FC, InputHTMLAttributes } from 'react';
 
 interface InputGroupProps extends InputHTMLAttributes<HTMLInputElement> {
   isLoading?: boolean;

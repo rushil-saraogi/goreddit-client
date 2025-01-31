@@ -2,7 +2,6 @@ import { getProduct } from "@/api/products";
 import { getCategories } from "@/api/categories";
 import Header from "@/components/Header";
 import EditProductForm from "./EditProductForm";
-import { Category } from "@/types/Category";
 
 export default async ({ params }: { params: Promise<{ id: string }> }) => {
     const id = (await params).id;

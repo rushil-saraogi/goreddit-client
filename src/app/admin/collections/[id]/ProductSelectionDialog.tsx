@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Image from 'next/image'
 import { Dialog, DialogPanel, DialogTitle, DialogBackdrop } from '@headlessui/react'
 import InputGroup from '@/components/InputGroup'
 import { Product } from '@/types/Product'
@@ -42,7 +43,13 @@ export default function ProductSelectionModal({
                       <div className="flex items-center gap-4">
                         {
                           product.Thumbnail && (
-                            <img src={product.Thumbnail} alt={product.Name} className="w-10 h-10 object-cover rounded-lg" />
+                            <Image
+                              aria-hidden
+                              src={product.Thumbnail}
+                              alt={product.Name}
+                              width={90}
+                              height={90}
+                            />
                           )
                         }
                         <div>

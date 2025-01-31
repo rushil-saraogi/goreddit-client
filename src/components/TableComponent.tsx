@@ -50,6 +50,7 @@ export default ({ data = [], onEdit, onDelete }: { data?: TableData, onEdit?: (i
                         <tr key={i} className="hover:bg-gray-50">
                             {row.map((cell, i) => (
                                 <td key={i} className="px-4 sm:px-6 py-3 whitespace-nowrap text-gray-700">
+                                    {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                                     {cell as any} {/* Don't care what this is, just render */}
                                 </td>
                             ))}

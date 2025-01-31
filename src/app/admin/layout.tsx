@@ -3,8 +3,6 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
-import Header from "@/components/Header";
-import { usePathname } from "next/navigation";
 import Sidebar from "./sidebar";
 
 const queryClient = new QueryClient()

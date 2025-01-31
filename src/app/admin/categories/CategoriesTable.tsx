@@ -1,10 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useMutation } from "@tanstack/react-query";
 import Button from "@/components/Button";
 import TableComponent from "@/components/TableComponent";
-// import { deleteC } from "@/api/collections";
 import { Category } from "@/types/Category";
 
 
