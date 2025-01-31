@@ -14,21 +14,10 @@ export default function AdminLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const pathname = usePathname();
-
-  const headers: Record<string, string> = {
-    '/admin': 'Products',
-    '/admin/collections/new': 'New Collection',
-    '/admin/collections': 'Collections',
-    '/admin/products/new': 'New Product',
-  }
-
   return (
-    <div className="flex min-h-screen bg-white admin">
+    <div className="flex min-h-screen admin">
         <Sidebar />
-        <main className="flex-1 p-4">
-            <Header>{headers[pathname]}</Header>
-
+        <main className="flex-1 p-4 min-w-0">
             <QueryClientProvider client={queryClient}>
               {children}
             </QueryClientProvider>

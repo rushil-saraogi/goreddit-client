@@ -21,7 +21,7 @@ const InputGroup: FC<InputGroupProps> = ({
   ...props
 }) => {
   // Determine additional input classes
-  const inputClasses = `focus:ring-indigo-500 py-4 text-gray-800 focus:border-indigo-500 disabled:bg-gray-100 disabled:text-gray-500 block w-full pr-12 border-gray-300 rounded-md h-11 border ${
+  const inputClasses = `focus:ring-teal-500 py-4 text-gray-800 focus:border-teal-500 disabled:bg-gray-100 disabled:text-gray-500 block w-full pr-12 border-gray-300 rounded-md h-11 border ${
     icon ? 'pl-11' : 'pl-3'
   } ${error ? 'border-red-500' : ''} ${className}`;
 

@@ -42,6 +42,16 @@ export function post(url: string, body: any) {
     }).then(data => data.json());
 }
 
+export function put(url: string, body: any) {
+    return fetch(`${getApiUrl()}${url}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+    }).then(data => data.json());
+}
+
 export function del(url: string) {
     return fetch(`${getApiUrl()}${url}`, {
         method: 'DELETE',

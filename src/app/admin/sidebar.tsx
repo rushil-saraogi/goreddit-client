@@ -16,6 +16,11 @@ export default () => {
       icon: "storefront",
     },
     {
+      name: "Catergories",
+      href: "/admin/categories",
+      icon: "category",
+    },
+    {
         name: "Exit",
         href: "/",
         icon: "logout",
