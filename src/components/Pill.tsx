@@ -2,7 +2,7 @@ type pillType = "success" | "default";
 
 export default ({ children, onClick, type = 'default' }: { children: React.ReactNode, onClick: () => void, type?: pillType }) => {
     const classes = {
-        success: "bg-green-400/10 border-green-400/10 hover:bg-green-400/20",
+        success: "bg-teal-400/10 border-teal-400/10 hover:bg-teal-400/20",
         default: "bg-gray-400/10 border-gray-400/10 hover:bg-gray-400/20",
     }
     return (

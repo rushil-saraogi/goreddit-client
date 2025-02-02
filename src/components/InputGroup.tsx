@@ -4,7 +4,7 @@ import React, { FC, InputHTMLAttributes } from 'react';
 
 interface InputGroupProps extends InputHTMLAttributes<HTMLInputElement> {
   isLoading?: boolean;
-  value: string;
+  value: string | number;
   icon?: string;
   error?: string;
   className?: string;
@@ -18,6 +18,7 @@ const InputGroup: FC<InputGroupProps> = ({
   error,
   className = '',
   children,
+  type = 'text',
   ...props
 }) => {
   // Determine additional input classes
@@ -42,6 +43,7 @@ const InputGroup: FC<InputGroupProps> = ({
           className={inputClasses}
           value={value}
           onChange={onChange}
+          type={type}
         />
         {/* Loader or slot content on the right */}
         <div className="absolute inset-y-0 right-0 flex items-center">

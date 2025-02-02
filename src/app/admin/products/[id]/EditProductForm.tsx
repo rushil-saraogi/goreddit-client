@@ -9,8 +9,10 @@ import { useState } from "react"
 import Alert from "@/components/Alert";
 import { Product } from "@/types/Product";
 import { Category } from "@/types/Category";
+import Dropdown from "@/components/Dropdown";
 import { addProductCategory, removeProductCategory } from "@/api/products";
 import Pill from "@/components/Pill";
+import { MOVEMENT_TYPES, CRYSTAL_TYPES, DIAL_COLORS, CASE_MATERIALS } from "./constants";
 
 export default ({ product, categories }: { product?: Product | null, categories: Category[] }) => {
     const [Name, setName] = useState(product?.Name || "");
@@ -101,34 +103,34 @@ export default ({ product, categories }: { product?: Product | null, categories:
                         <InputGroup value={Reference} onChange={(e) => setReference(e.target.value)} />
                     </Label>
                     <Label text="Price">
-                        <InputGroup value={Price.toString()} onChange={(e) => setPrice(parseFloat(e.target.value))} />
+                        <InputGroup value={Price} onChange={(e) => setPrice(parseFloat(e.target.value))} />
                     </Label>
                     <Label text="Case Size">
-                        <InputGroup value={CaseSize.toString()} onChange={(e) => setCaseSize(parseFloat(e.target.value))} />
+                        <InputGroup value={CaseSize} type="number" onChange={(e) => setCaseSize(parseFloat(e.target.value))} />
                     </Label>
                     <Label text="Lug To Lug">
-                        <InputGroup value={LugToLug.toString()} onChange={(e) => setLugToLug(parseFloat(e.target.value))} />
+                        <InputGroup value={LugToLug} onChange={(e) => setLugToLug(parseFloat(e.target.value))} />
                     </Label>
                     <Label text="Thickness">
-                        <InputGroup value={Thickness.toString()} onChange={(e) => setThickness(parseFloat(e.target.value))} />
+                        <InputGroup value={Thickness} onChange={(e) => setThickness(parseFloat(e.target.value))} />
                     </Label>
                     <Label text="Lug Width">
-                        <InputGroup value={LugWidth.toString()} onChange={(e) => setLugWidth(parseFloat(e.target.value))} />
+                        <InputGroup value={LugWidth} onChange={(e) => setLugWidth(parseFloat(e.target.value))} />
                     </Label>
                     <Label text="Movement">
                         <InputGroup value={Movement} onChange={(e) => setMovement(e.target.value)} />
                     </Label>
                     <Label text="Movement Type">
-                        <InputGroup value={MovementType} onChange={(e) => setMovementType(e.target.value)} />
+                        <Dropdown items={MOVEMENT_TYPES} value={MovementType} onClick={(value) => setMovementType(value)} />
                     </Label>
                     <Label text="Crystal">
-                        <InputGroup value={Crystal} onChange={(e) => setCrystal(e.target.value)} />
+                        <Dropdown items={CRYSTAL_TYPES} value={Crystal} onClick={(value) => setCrystal(value)} />
                     </Label>
                     <Label text="Dial Color">
-                        <InputGroup value={DialColor} onChange={(e) => setDialColor(e.target.value)} />
+                        <Dropdown items={DIAL_COLORS} value={DialColor} onClick={(value) => setDialColor(value)} />
                     </Label>
                     <Label text="Case Material">
-                        <InputGroup value={CaseMaterial} onChange={(e) => setCaseMaterial(e.target.value)} />
+                        <Dropdown items={CASE_MATERIALS} value={CaseMaterial} onClick={(value) => setCaseMaterial(value)} />
                     </Label>
                     <Label text="Thumbnail">
                         <InputGroup value={Thumbnail} onChange={(e) => setThumbnail(e.target.value)} />
