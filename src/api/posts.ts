@@ -7,3 +7,7 @@ export function getLatestPosts() {
 export function getPostsForBrand(brandId: string) {
     return get(`/brand/${brandId}/posts`);
 }
+
+export function getPostsForProduct(productId: string) {
+    return get(`/product/${productId}/posts`);
+}

@@ -17,11 +17,11 @@ import { MOVEMENT_TYPES, CRYSTAL_TYPES, DIAL_COLORS, CASE_MATERIALS } from "./co
 export default ({ product, categories }: { product?: Product | null, categories: Category[] }) => {
     const [Name, setName] = useState(product?.Name || "");
     const [Reference, setReference] = useState(product?.Reference || "");
-    const [Price, setPrice] = useState(product?.Price || 0);
-    const [CaseSize, setCaseSize] = useState(product?.CaseSize || 0);
-    const [LugToLug, setLugToLug] = useState(product?.LugToLug || 0);
-    const [Thickness, setThickness] = useState(product?.Thickness || 0);
-    const [LugWidth, setLugWidth] = useState(product?.LugWidth || 0);
+    const [Price, setPrice] = useState(product?.Price.toString() || '0');
+    const [CaseSize, setCaseSize] = useState(product?.CaseSize.toString() || '0');
+    const [LugToLug, setLugToLug] = useState(product?.LugToLug.toString() || '0');
+    const [Thickness, setThickness] = useState(product?.Thickness.toString() || '0');
+    const [LugWidth, setLugWidth] = useState(product?.LugWidth.toString() || '0');
     const [Movement, setMovement] = useState(product?.Movement || "");
     const [MovementType, setMovementType] = useState(product?.MovementType || "");
     const [Crystal, setCrystal] = useState(product?.Crystal || "");
@@ -33,11 +33,11 @@ export default ({ product, categories }: { product?: Product | null, categories:
     const getProductObject = () => ({
         Name,
         Reference,
-        Price,
-        CaseSize,
-        LugToLug,
-        Thickness,
-        LugWidth,
+        Price: parseFloat(Price),
+        CaseSize: parseFloat(CaseSize),
+        LugToLug: parseFloat(LugToLug),
+        Thickness: parseFloat(Thickness),
+        LugWidth: parseFloat(LugWidth),
         Movement,
         MovementType,
         Crystal,
@@ -95,6 +95,7 @@ export default ({ product, categories }: { product?: Product | null, categories:
                 mutation.isError && <Alert type="error">An error occurred</Alert>
             }
             <div className="p-4 border border-gray-200 rounded-lg flex flex-col gap-4">
+                <div className="font-semibold">Metadata</div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <Label text="Name">
                         <InputGroup value={Name} onChange={(e) => setName(e.target.value)} />
@@ -103,19 +104,19 @@ export default ({ product, categories }: { product?: Product | null, categories:
                         <InputGroup value={Reference} onChange={(e) => setReference(e.target.value)} />
                     </Label>
                     <Label text="Price">
-                        <InputGroup value={Price} onChange={(e) => setPrice(parseFloat(e.target.value))} />
+                        <InputGroup value={Price} onChange={(e) => setPrice(e.target.value)} />
                     </Label>
                     <Label text="Case Size">
-                        <InputGroup value={CaseSize} type="number" onChange={(e) => setCaseSize(parseFloat(e.target.value))} />
+                        <InputGroup value={CaseSize} type="number" onChange={(e) => setCaseSize(e.target.value)} />
                     </Label>
                     <Label text="Lug To Lug">
-                        <InputGroup value={LugToLug} onChange={(e) => setLugToLug(parseFloat(e.target.value))} />
+                        <InputGroup value={LugToLug} onChange={(e) => setLugToLug(e.target.value)} />
                     </Label>
                     <Label text="Thickness">
-                        <InputGroup value={Thickness} onChange={(e) => setThickness(parseFloat(e.target.value))} />
+                        <InputGroup value={Thickness} onChange={(e) => setThickness(e.target.value)} />
                     </Label>
                     <Label text="Lug Width">
-                        <InputGroup value={LugWidth} onChange={(e) => setLugWidth(parseFloat(e.target.value))} />
+                        <InputGroup value={LugWidth} onChange={(e) => setLugWidth(e.target.value)} />
                     </Label>
                     <Label text="Movement">
                         <InputGroup value={Movement} onChange={(e) => setMovement(e.target.value)} />
@@ -142,23 +143,23 @@ export default ({ product, categories }: { product?: Product | null, categories:
                         {product ? "Update" : "Create"}
                     </Button>
                 </div>
+            </div>
 
-                <div>
-                    <div className="font-semibold">Categories</div>
+            <div className="p-4 border border-gray-200 rounded-lg">
+                <div className="font-semibold">Categories</div>
 
-                    <div className="flex gap-3 flex-wrap mt-4">
-                        {
-                            categories.map((category) => (
-                                <Pill
-                                    key={category.ID}
-                                    onClick={() => hanldeCategoryClick(category.ID)}
-                                    type={Categories.find((c) => c.ID === category.ID) ? "success" : "default"}
-                                >
-                                    {category.Name}
-                                </Pill>
-                            ))
-                        }
-                    </div>
+                <div className="flex gap-3 flex-wrap mt-4">
+                    {
+                        categories.map((category) => (
+                            <Pill
+                                key={category.ID}
+                                onClick={() => hanldeCategoryClick(category.ID)}
+                                type={Categories.find((c) => c.ID === category.ID) ? "success" : "default"}
+                            >
+                                {category.Name}
+                            </Pill>
+                        ))
+                    }
                 </div>
             </div>
         </div>

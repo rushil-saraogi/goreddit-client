@@ -1,7 +1,9 @@
 "use client";
 import React, { useState } from 'react';
 
-const Tooltip = ({ text, position = 'left', children }: {text: string, position: 'left' | 'bottom' | 'right', children: React.ReactNode}) => {
+export type TooltipPosition = 'left' | 'bottom' | 'right';
+
+const Tooltip = ({ text, position = 'left', children }: {text: string, position: TooltipPosition, children: React.ReactNode}) => {
   const [hoverActive, setHoverActive] = useState(false);
 
   return (

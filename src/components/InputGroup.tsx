@@ -8,17 +8,18 @@ interface InputGroupProps extends InputHTMLAttributes<HTMLInputElement> {
   icon?: string;
   error?: string;
   className?: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const InputGroup: FC<InputGroupProps> = ({
   isLoading = false,
   value,
-  onChange,
   icon,
   error,
   className = '',
   children,
   type = 'text',
+  onChange,
   ...props
 }) => {
   // Determine additional input classes

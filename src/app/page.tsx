@@ -19,7 +19,7 @@ export default async function Home() {
     <div className="min-h-screen mx-auto max-w-[1960px] p-4">
       <main>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-6">
-          <div className="col-span-1 row-span-3 flex flex-col items-center justify-center overflow-hidden rounded-lg bg-white/10 p-6 text-center text-white shadow-highlight sm:col-span-2 lg:col-span-2 lg:row-span-2">
+          <div className="col-span-1 row-span-3 flex flex-col items-center justify-center overflow-hidden rounded-lg bg-white/10 p-6 text-center text-white shadow-highlight col-span-1 lg:col-span-2 lg:row-span-2">
             <Image
               aria-hidden
               src="/logo.png"

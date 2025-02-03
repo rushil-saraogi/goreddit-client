@@ -19,18 +19,26 @@ export default ({ data = [], onEdit, onDelete }: { data?: TableData, onEdit?: (i
             Created: tableDateFormat(row.Created),
             Updated: tableDateFormat(row.Updated),
         }))
-        .map(row => ({
-            [ACTIONS_COLUMN]: (
-                <div className="flex gap-2">
-                    {onEdit && (<IconButton onClick={() => onEdit(row.ID)} icon="edit" tooltip="Edit" />)}
-                    {onDelete && (<IconButton onClick={() => onDelete(row.ID)} icon="delete" tooltip="Delete" />)}
-                </div>
-            ),
-            ...row,
-        }))
+        .map(row => {
+            if (!onEdit && !onDelete) return row;
+
+            return {
+                [ACTIONS_COLUMN]: (
+                    <div className="flex gap-2">
+                        {onEdit && (<IconButton onClick={() => onEdit(row.ID)} icon="edit" tooltip="Edit" position="right" />)}
+                        {onDelete && (<IconButton onClick={() => onDelete(row.ID)} icon="delete" tooltip="Delete" position="right" />)}
+                    </div>
+                ),
+                ...row,
+            };
+        })
         .map(row => Object.values(row))
 
-        const headers: string[] = [ACTIONS_COLUMN, ...Object.keys(data[0])];
+    const headers: string[] = Object.keys(data[0]);
+
+    if (onEdit || onDelete) {
+        headers.unshift(ACTIONS_COLUMN);
+    }
 
     return (
         <div className="shadow-sm border border-gray-200 sm:rounded-lg overflow-x-auto">

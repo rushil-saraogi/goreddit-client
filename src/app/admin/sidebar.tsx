@@ -21,6 +21,11 @@ export default () => {
       icon: "category",
     },
     {
+      name: "Posts",
+      href: "/admin/posts",
+      icon: "post",
+    },
+    {
         name: "Exit",
         href: "/",
         icon: "logout",
