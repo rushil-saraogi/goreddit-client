@@ -7,7 +7,7 @@ export function getBrands(): Promise<Array<Brand>> {
     return get('/brands');
 }
 
-export function getBrand(id: number): Promise<Brand> {
+export function getBrand(id: string): Promise<Brand> {
     return get(`/brand/${id}`);
 }
 
@@ -15,10 +15,10 @@ export function createBrand(brand: CreateBrandRequest): Promise<Brand> {
     return post('/brand', brand);
 }
 
-export function updateBrand(id: number, brand: CreateBrandRequest): Promise<Brand> {
+export function updateBrand(id: string, brand: CreateBrandRequest): Promise<Brand> {
     return put(`/brand/${id}`, brand);
 }
 
-export function deleteBrand(id: number): Promise<void> {
+export function deleteBrand(id: string): Promise<void> {
     return del(`/brand/${id}/delete`);
 }

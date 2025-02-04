@@ -25,7 +25,7 @@ export default ({ brand }: { brand: Brand }) => {
 
     const saveChanges = async () => {
         if (brand) {
-            await updateBrand(brand.ID, getBrandObject());
+            await updateBrand(brand.ID.toString(), getBrandObject());
             return;
         }
 
