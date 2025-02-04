@@ -1,12 +1,12 @@
 import { useRef, useEffect } from "react";
 import { Collection } from "@/types/Collection";
 import { Product } from "@/types/Product";
-import WatchExPost from "@/types/WatchExPost";
+import { WatchExPostWithBrandAndProductTable } from "@/types/WatchExPost";
 import IconButton from "./IconButton";
 import { tableDateFormat } from "@/api/util";
 import { useInView } from "react-intersection-observer";
 
-type TableData = (Collection[] | Product[] | WatchExPost[]) & { Actions?: React.ReactNode };
+type TableData = (Collection[] | Product[] | WatchExPostWithBrandAndProductTable[]) & { Actions?: React.ReactNode };
 const ACTIONS_COLUMN = 'Actions';
 
 export default ({ data = [], onEdit, onDelete, onClick, onViewMore }: {
@@ -74,7 +74,7 @@ export default ({ data = [], onEdit, onDelete, onClick, onViewMore }: {
                     {tableDataArray.map((row, i) => (
                         <tr key={i} className={`${onClick ? 'cursor-pointer hover:bg-gray-500/5' : ''}`} onClick={() => onClick?.(data[i].ID)}>
                             {row.map((cell, i) => (
-                                <td key={i} className="px-4 sm:px-6 py-3 whitespace-nowrap text-gray-700">
+                                <td key={i} className="px-4 sm:px-6 py-3 whitespace-nowrap text-gray-700 max-w-80 overflow-hidden overflow-ellipsis">
                                     {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                                     {cell as any} {/* Don't care what this is, just render */}
                                 </td>

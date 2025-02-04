@@ -1,4 +1,4 @@
-export default ({ classes = '' }: { classes: string }) => {
+export default ({ classes = '' }: { classes?: string }) => {
     return (
         <div className="flex justify-center items-center">
             <div

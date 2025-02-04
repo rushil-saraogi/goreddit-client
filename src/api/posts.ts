@@ -1,4 +1,4 @@
-import { get } from "./util";
+import { get, post } from "./util";
 import WatchExPost, {WatchExPostWithBrandAndProduct} from "@/types/WatchExPost";
 
 interface PaginatedPostResponse<T = WatchExPost> {
@@ -26,4 +26,8 @@ export function getPostsForBrand(brandId: string) {
 
 export function getPostsForProduct(productId: string) {
     return get(`/product/${productId}/posts`);
+}
+
+export function reprocessPosts() {
+    return post('/posts/reprocess', {});
 }

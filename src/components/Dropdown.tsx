@@ -2,14 +2,9 @@ import { useState } from 'react';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import InputGroup from './InputGroup';
 
-interface DropdownItem {
-  Name: string;
-  ID: string | number;
-}
-
-export default ({ value, items, onClick, showSearch = false }: { value?: string | null, items: DropdownItem[], onClick: (value: string) => void, showSearch?: boolean }) => {
+export default ({ value, items, onClick, showSearch = false }: { value?: string | null, items: string[], onClick: (value: string) => void, showSearch?: boolean }) => {
   const [query, setQuery] = useState('');
-  const filteredItems = items.filter((item) => item.Name.toLowerCase().includes(query.toLowerCase()));
+  const filteredItems = items.filter((item) => item.toLowerCase().includes(query.toLowerCase()));
 
   return (
     <Menu>
@@ -27,12 +22,12 @@ export default ({ value, items, onClick, showSearch = false }: { value?: string 
         }
         {
           filteredItems.map((item) => (
-            <MenuItem key={item.ID}>
+            <MenuItem key={item}>
               <div
-                className={`px-4 py-2 hover:bg-gray-400/20 transition min-w-48 hover:cursor-pointer ${item.Name === value ? 'bg-teal-100 hover:bg-teal-200' : ''}`}
-                onClick={() => onClick(item.Name)}
+                className={`px-4 py-2 hover:bg-gray-400/20 transition min-w-48 hover:cursor-pointer ${item === value ? 'bg-teal-100 hover:bg-teal-200' : ''}`}
+                onClick={() => onClick(item)}
               >
-                {item.Name}
+                {item}
               </div>
             </MenuItem>
           ))

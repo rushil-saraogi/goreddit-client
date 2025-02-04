@@ -17,15 +17,14 @@ import Pill from "@/components/Pill";
 import { MOVEMENT_TYPES, CRYSTAL_TYPES, DIAL_COLORS, CASE_MATERIALS } from "./constants";
 
 export default ({ product, categories, brands }: { product?: Product | null, categories: Category[], brands: Brand[] }) => {
+    const brandNames = brands.map((brand) => brand.Name);
     const searchParams = useSearchParams();
     const brandIDParam = searchParams.get('brandID');
-    const brandID = brandIDParam || product?.BrandID;
+    // Query param > product > default value
+    const brandIDInitialValue = brandIDParam ? parseInt(brandIDParam) : (product?.BrandID || 1);
+    const initialBrand = brands.find((brand) => brand.ID === brandIDInitialValue)?.Name || brandNames[0];
 
-    const [Brand, setBrand] = useState(
-        brandID
-            ? brands.find((b) => b.ID === parseInt(brandID.toString()))?.Name
-            : ""
-    );
+    const [brand, setBrand] = useState(initialBrand);
     const [Name, setName] = useState(product?.Name || "");
     const [Reference, setReference] = useState(product?.Reference || "");
     const [Price, setPrice] = useState(product?.Price.toString() || '0');
@@ -54,6 +53,7 @@ export default ({ product, categories, brands }: { product?: Product | null, cat
         Crystal,
         DialColor,
         CaseMaterial,
+        BrandID: brands.find((item) => item.Name === brand)?.ID || 1,
         Thumbnail,
     })
 
@@ -109,7 +109,7 @@ export default ({ product, categories, brands }: { product?: Product | null, cat
                 <div className="font-semibold">Metadata</div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <Label text="Brand">
-                        <Dropdown items={brands} value={Brand} onClick={(value) => setBrand(value)} showSearch={true} />
+                        <Dropdown items={brandNames} value={brand} onClick={(value) => setBrand(value)} showSearch={true} />
                     </Label>
                     <Label text="Name">
                         <InputGroup value={Name} onChange={(e) => setName(e.target.value)} />
@@ -136,16 +136,16 @@ export default ({ product, categories, brands }: { product?: Product | null, cat
                         <InputGroup value={Movement} onChange={(e) => setMovement(e.target.value)} />
                     </Label>
                     <Label text="Movement Type">
-                        <Dropdown items={MOVEMENT_TYPES} value={MovementType} onClick={(value) => setMovementType(value)} />
+                        <Dropdown items={Object.values(MOVEMENT_TYPES)} value={MovementType} onClick={(value) => setMovementType(value)} />
                     </Label>
                     <Label text="Crystal">
-                        <Dropdown items={CRYSTAL_TYPES} value={Crystal} onClick={(value) => setCrystal(value)} />
+                        <Dropdown items={Object.values(CRYSTAL_TYPES)} value={Crystal} onClick={(value) => setCrystal(value)} />
                     </Label>
                     <Label text="Dial Color">
-                        <Dropdown items={DIAL_COLORS} value={DialColor} onClick={(value) => setDialColor(value)} />
+                        <Dropdown items={Object.values(DIAL_COLORS)} value={DialColor} onClick={(value) => setDialColor(value)} />
                     </Label>
                     <Label text="Case Material">
-                        <Dropdown items={CASE_MATERIALS} value={CaseMaterial} onClick={(value) => setCaseMaterial(value)} />
+                        <Dropdown items={Object.values(CASE_MATERIALS)} value={CaseMaterial} onClick={(value) => setCaseMaterial(value)} />
                     </Label>
                     <Label text="Thumbnail">
                         <InputGroup value={Thumbnail} onChange={(e) => setThumbnail(e.target.value)} />

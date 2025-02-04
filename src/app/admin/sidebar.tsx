@@ -36,7 +36,7 @@ export default () => {
   const activeTab = navItems.findIndex((tab) => tab.href === pathname);
 
   return (
-    <div className="bg-slate-800 min-w-44 lg:min-w-56 p-3">
+    <div className="bg-slate-800 min-w-44 lg:min-w-56 p-3 h-screen">
       {navItems.map((item, index) => (
         <Link
           key={index}

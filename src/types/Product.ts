@@ -52,6 +52,7 @@ export interface CreateProductRequest {
     Thickness: number;
     LugWidth: number;
     Movement: string;
+    BrandID: number;
     MovementType: string;
     Crystal: string;
     DialColor: string;

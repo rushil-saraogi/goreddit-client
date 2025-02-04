@@ -1,79 +1,31 @@
-export const MOVEMENT_TYPES = [
-    {
-        ID: 1,
-        Name: 'Automatic'
-    },
-    {
-        ID: 2,
-        Name: 'Quartz'
-    },
-    {
-        ID: 3,
-        Name: 'Manual'
-    },
-    {
-        ID: 5,
-        Name: 'Solar Quartz'
-    }
-];
+export const MOVEMENT_TYPES = {
+    Automatic: 'Automatic',
+    Quartz: 'Quartz',
+    Manual: 'Manual',
+    SolarQuartz: 'Solar Quartz'
+};
 
-export const CRYSTAL_TYPES = [
-    {
-        ID: 1,
-        Name: 'Sapphire'
-    },
-    {
-        ID: 2,
-        Name: 'Mineral'
-    },
-    {
-        ID: 3,
-        Name: 'Hardlex'
-    },
-    {
-        ID: 5,
-        Name: 'Acrylic'
-    }
-];
+export const CRYSTAL_TYPES = {
+    Sapphire: 'Sapphire',
+    Mineral: 'Mineral',
+    Hardlex: 'Hardlex',
+    Acrylic: 'Acrylic'
+};
 
-export const DIAL_COLORS = [
-    {
-        ID: 1,
-        Name: 'Black'
-    },
-    {
-        ID: 2,
-        Name: 'White'
-    },
-    {
-        ID: 3,
-        Name: 'Blue'
-    },
-    {
-        ID: 5,
-        Name: 'Green'
-    }
-];
+export const DIAL_COLORS = {
+    Black: 'Black',
+    White: 'White',
+    Blue: 'Blue',
+    Green: 'Green',
+    Red: 'Red',
+    Silver: 'Silver',
+    Gray: 'Gray',
+    Gold: 'Gold'
+};
 
-export const CASE_MATERIALS = [
-    {
-        ID: 1,
-        Name: 'Stainless Steel'
-    },
-    {
-        ID: 2,
-        Name: 'Titanium'
-    },
-    {
-        ID: 3,
-        Name: 'Gold'
-    },
-    {
-        ID: 5,
-        Name: 'Plastic'
-    },
-    {
-        ID: 6,
-        Name: 'Ceramic'
-    }
-];
+export const CASE_MATERIALS = {
+    StainlessSteel: 'Stainless Steel',
+    Titanium: 'Titanium',
+    Ceramic: 'Ceramic',
+    Bronze: 'Bronze'
+};

@@ -1,7 +1,7 @@
 export default interface WatchExPost {
     ID: number;
     Title: string;
-    Content: string;
+    Content?: string;
     Username: string;
     Thumbnail: string;
     PostTime: number;
@@ -12,4 +12,9 @@ export default interface WatchExPost {
 export interface WatchExPostWithBrandAndProduct extends WatchExPost {
     Brands: string[];
     Products: string[];
+}
+
+export interface WatchExPostWithBrandAndProductTable extends WatchExPost {
+    Brands: React.ReactNode;
+    Products: React.ReactNode;
 }

@@ -27,10 +27,7 @@ export default function RootLayout({
         {children}
 
         <Navigation />
-
-        <div className="my-12">
-          <Footer />
-        </div>
+        <Footer />
       </body>
     </html>
   );
