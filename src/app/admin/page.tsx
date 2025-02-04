@@ -1,14 +1,13 @@
 import { getProducts } from "@/api/products";
-import ProductTable from './ProductTable'
-import Header from "@/components/Header";
+import { getBrands } from "@/api/brands";
+import BrandTable from './BrandTable';
 
 export default async function Products() {
-  const products = await getProducts();
+  const brands = await getBrands();
 
   return (
     <>
-      <Header>Products</Header>
-      <ProductTable data={products} />
+      <BrandTable data={brands} />
     </>
   );
 }

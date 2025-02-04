@@ -37,6 +37,7 @@ export interface Product {
     DialColor: string;
     CaseMaterial: string;
     Thumbnail: string;
+    BrandID: number;
     Categories?: Category[];
     Created: string;
     Updated: string;

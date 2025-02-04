@@ -6,8 +6,13 @@ import { tableDateFormat } from "@/api/util";
 type TableData = (Collection[] | Product[]) & { Actions?: React.ReactNode };
 const ACTIONS_COLUMN = 'Actions';
 
-export default ({ data = [], onEdit, onDelete }: { data?: TableData, onEdit?: (id: number) => void, onDelete?: (id: number) => void }) => {
-    if (!data.length) return (
+export default ({ data = [], onEdit, onDelete, onClick }: {
+        data?: TableData,
+        onEdit?: (id: number) => void,
+        onDelete?: (id: number) => void,
+        onClick?: (id: number) => void,
+    }) => {
+    if (!data?.length) return (
         (
             <div className="p-4 text-gray-500 text-center bg-gray-400/10">No data available</div>
         )
@@ -55,7 +60,7 @@ export default ({ data = [], onEdit, onDelete }: { data?: TableData, onEdit?: (i
 
                 <tbody className="divide-y divide-gray-200">
                     {tableDataArray.map((row, i) => (
-                        <tr key={i} className="hover:bg-gray-50">
+                        <tr key={i} className={`${onClick ? 'cursor-pointer hover:bg-gray-500/5' : ''}`} onClick={() => onClick?.(data[i].ID)}>
                             {row.map((cell, i) => (
                                 <td key={i} className="px-4 sm:px-6 py-3 whitespace-nowrap text-gray-700">
                                     {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}

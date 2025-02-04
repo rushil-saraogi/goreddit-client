@@ -11,10 +11,12 @@ import { Product } from "@/types/Product";
 import { Category } from "@/types/Category";
 import Dropdown from "@/components/Dropdown";
 import { addProductCategory, removeProductCategory } from "@/api/products";
+import Brand from "@/types/Brand";
 import Pill from "@/components/Pill";
 import { MOVEMENT_TYPES, CRYSTAL_TYPES, DIAL_COLORS, CASE_MATERIALS } from "./constants";
 
-export default ({ product, categories }: { product?: Product | null, categories: Category[] }) => {
+export default ({ product, categories, brands }: { product?: Product | null, categories: Category[], brands: Brand[] }) => {
+    const [Brand, setBrand] = useState(product?.BrandID ? brands.find((b) => b.ID === product?.BrandID)?.Name : null);
     const [Name, setName] = useState(product?.Name || "");
     const [Reference, setReference] = useState(product?.Reference || "");
     const [Price, setPrice] = useState(product?.Price.toString() || '0');
@@ -97,6 +99,9 @@ export default ({ product, categories }: { product?: Product | null, categories:
             <div className="p-4 border border-gray-200 rounded-lg flex flex-col gap-4">
                 <div className="font-semibold">Metadata</div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <Label text="Brand">
+                        <Dropdown items={brands} value={Brand} onClick={(value) => setBrand(value)} showSearch={true} />
+                    </Label>
                     <Label text="Name">
                         <InputGroup value={Name} onChange={(e) => setName(e.target.value)} />
                     </Label>
@@ -145,23 +150,27 @@ export default ({ product, categories }: { product?: Product | null, categories:
                 </div>
             </div>
 
-            <div className="p-4 border border-gray-200 rounded-lg">
-                <div className="font-semibold">Categories</div>
+            {
+                product && (
+                    <div className="p-4 border border-gray-200 rounded-lg">
+                        <div className="font-semibold">Categories</div>
 
-                <div className="flex gap-3 flex-wrap mt-4">
-                    {
-                        categories.map((category) => (
-                            <Pill
-                                key={category.ID}
-                                onClick={() => hanldeCategoryClick(category.ID)}
-                                type={Categories.find((c) => c.ID === category.ID) ? "success" : "default"}
-                            >
-                                {category.Name}
-                            </Pill>
-                        ))
-                    }
-                </div>
-            </div>
+                        <div className="flex gap-3 flex-wrap mt-4">
+                            {
+                                categories.map((category) => (
+                                    <Pill
+                                        key={category.ID}
+                                        onClick={() => hanldeCategoryClick(category.ID)}
+                                        type={Categories.find((c) => c.ID === category.ID) ? "success" : "default"}
+                                    >
+                                        {category.Name}
+                                    </Pill>
+                                ))
+                            }
+                        </div>
+                    </div>
+                )
+            }
         </div>
 
     )

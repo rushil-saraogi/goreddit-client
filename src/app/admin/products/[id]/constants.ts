@@ -1,79 +1,79 @@
 export const MOVEMENT_TYPES = [
     {
-        id: 1,
-        title: 'Automatic'
+        ID: 1,
+        Name: 'Automatic'
     },
     {
-        id: 2,
-        title: 'Quartz'
+        ID: 2,
+        Name: 'Quartz'
     },
     {
-        id: 3,
-        title: 'Manual'
+        ID: 3,
+        Name: 'Manual'
     },
     {
-        id: 5,
-        title: 'Solar Quartz'
+        ID: 5,
+        Name: 'Solar Quartz'
     }
 ];
 
 export const CRYSTAL_TYPES = [
     {
-        id: 1,
-        title: 'Sapphire'
+        ID: 1,
+        Name: 'Sapphire'
     },
     {
-        id: 2,
-        title: 'Mineral'
+        ID: 2,
+        Name: 'Mineral'
     },
     {
-        id: 3,
-        title: 'Hardlex'
+        ID: 3,
+        Name: 'Hardlex'
     },
     {
-        id: 5,
-        title: 'Acrylic'
+        ID: 5,
+        Name: 'Acrylic'
     }
 ];
 
 export const DIAL_COLORS = [
     {
-        id: 1,
-        title: 'Black'
+        ID: 1,
+        Name: 'Black'
     },
     {
-        id: 2,
-        title: 'White'
+        ID: 2,
+        Name: 'White'
     },
     {
-        id: 3,
-        title: 'Blue'
+        ID: 3,
+        Name: 'Blue'
     },
     {
-        id: 5,
-        title: 'Green'
+        ID: 5,
+        Name: 'Green'
     }
 ];
 
 export const CASE_MATERIALS = [
     {
-        id: 1,
-        title: 'Stainless Steel'
+        ID: 1,
+        Name: 'Stainless Steel'
     },
     {
-        id: 2,
-        title: 'Titanium'
+        ID: 2,
+        Name: 'Titanium'
     },
     {
-        id: 3,
-        title: 'Gold'
+        ID: 3,
+        Name: 'Gold'
     },
     {
-        id: 5,
-        title: 'Plastic'
+        ID: 5,
+        Name: 'Plastic'
     },
     {
-        id: 6,
-        title: 'Ceramic'
+        ID: 6,
+        Name: 'Ceramic'
     }
 ];

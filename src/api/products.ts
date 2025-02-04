@@ -13,6 +13,10 @@ export function getProductsByCategory(categoryId: number): Promise<Array<Product
     return get(`/category/${categoryId}/products`);
 }
 
+export function getProductsByBrand(brandId: number): Promise<Array<Product>> {
+    return get(`/brand/${brandId}/products`);
+}
+
 export function createProduct(product: CreateProductRequest): Promise<Product> {
     return post('/products', product);
 }
