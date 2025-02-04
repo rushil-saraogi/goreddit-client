@@ -1,4 +1,3 @@
-import { getProducts } from "@/api/products";
 import { getBrands } from "@/api/brands";
 import BrandTable from './BrandTable';
 

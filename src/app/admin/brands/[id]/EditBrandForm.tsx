@@ -6,7 +6,6 @@ import Label from "@/components/Label";
 import Button from "@/components/Button";
 import { useState } from "react"
 import Alert from "@/components/Alert";
-import { Product } from "@/types/Product";
 import Brand from "@/types/Brand";
 import { createBrand, updateBrand, CreateBrandRequest } from "@/api/brands";
 
