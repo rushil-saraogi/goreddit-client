@@ -1,4 +1,6 @@
-import { useRef, useEffect } from "react";
+"use client";
+
+import { useEffect } from "react";
 import { Collection } from "@/types/Collection";
 import { Product } from "@/types/Product";
 import { WatchExPostWithBrandAndProductTable } from "@/types/WatchExPost";
