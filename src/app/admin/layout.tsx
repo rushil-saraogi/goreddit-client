@@ -15,7 +15,7 @@ export default function AdminLayout({
   return (
     <div className="flex min-h-screen admin">
         <Sidebar />
-        <main className="flex-1 p-4 min-w-0">
+        <main className="flex-1 p-4 sm:p-8 min-w-0">
             <QueryClientProvider client={queryClient}>
               {children}
             </QueryClientProvider>

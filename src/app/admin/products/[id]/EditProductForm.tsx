@@ -1,6 +1,7 @@
 "use client";
 
 import { useMutation } from "@tanstack/react-query";
+import { useSearchParams } from 'next/navigation';
 import InputGroup from "@/components/InputGroup"
 import Label from "@/components/Label";
 import Button from "@/components/Button";
@@ -16,7 +17,15 @@ import Pill from "@/components/Pill";
 import { MOVEMENT_TYPES, CRYSTAL_TYPES, DIAL_COLORS, CASE_MATERIALS } from "./constants";
 
 export default ({ product, categories, brands }: { product?: Product | null, categories: Category[], brands: Brand[] }) => {
-    const [Brand, setBrand] = useState(product?.BrandID ? brands.find((b) => b.ID === product?.BrandID)?.Name : null);
+    const searchParams = useSearchParams();
+    const brandIDParam = searchParams.get('brandID');
+    const brandID = brandIDParam || product?.BrandID;
+
+    const [Brand, setBrand] = useState(
+        brandID
+            ? brands.find((b) => b.ID === parseInt(brandID.toString()))?.Name
+            : ""
+    );
     const [Name, setName] = useState(product?.Name || "");
     const [Reference, setReference] = useState(product?.Reference || "");
     const [Price, setPrice] = useState(product?.Price.toString() || '0');

@@ -7,7 +7,7 @@ import TableComponent from "@/components/TableComponent";
 import { Product } from "@/types/Product";
 import { deleteProduct } from "@/api/products";
 
-export default function ProductTable({ data }: { data: Product[] }) {
+export default function ProductTable({ data, brandID }: { data: Product[], brandID?: number }) {
   const router = useRouter();
 
   const mutation = useMutation({
@@ -18,8 +18,12 @@ export default function ProductTable({ data }: { data: Product[] }) {
     router.push(`/admin/products/${id}`);
   }
 
+  const handleNewClick = () => {
+    router.push(`/admin/products/new${brandID ? `?brandID=${brandID}` : ''}`);
+  }
+
   const handleDeleteClick = async (id: number) => {
-    if (!confirm('Are you sure you want to delete this collection?')) {
+    if (!confirm('Are you sure you want to delete this product?')) {
       return;
     }
 
@@ -30,7 +34,7 @@ export default function ProductTable({ data }: { data: Product[] }) {
   return (
     <div>
       <div className="flex justify-end mb-4">
-        <Button type="secondary" href="/admin/products/new">Add Product</Button>
+        <Button type="secondary" onClick={handleNewClick}>Add Product</Button>
       </div>
       <TableComponent
         data={data}

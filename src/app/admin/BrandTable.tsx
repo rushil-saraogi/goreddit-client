@@ -5,17 +5,17 @@ import { useMutation } from "@tanstack/react-query";
 import Button from "@/components/Button";
 import TableComponent from "@/components/TableComponent";
 import Brand from "@/types/Brand";
-import { deleteProduct } from "@/api/products";
+import { deleteBrand } from "@/api/brands";
 
 export default function BrandTable({ data }: { data: Brand[] }) {
   const router = useRouter();
 
   const mutation = useMutation({
-    mutationFn: deleteProduct
+    mutationFn: deleteBrand
   })
 
   const handleEditClick = (id: number) => {
-    router.push(`/admin/products/${id}`);
+    router.push(`/admin/brands/${id}`);
   }
 
   const handleRowClick = (id: number) => {
@@ -23,7 +23,7 @@ export default function BrandTable({ data }: { data: Brand[] }) {
   }
 
   const handleDeleteClick = async (id: number) => {
-    if (!confirm('Are you sure you want to delete this collection?')) {
+    if (!confirm('Are you sure you want to delete this brand?')) {
       return;
     }
 
