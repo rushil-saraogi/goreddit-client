@@ -12,11 +12,11 @@ export function getLatestPosts(): Promise<WatchExPost[]> {
     return get('/posts/latest', true);
 }
 
-export function getAllPosts(page: Number = 1, pageSize: Number = 25): Promise<PaginatedPostResponse> {
+export function getAllPosts(page: number = 1, pageSize: number = 25): Promise<PaginatedPostResponse> {
     return get(`/posts/all?page=${page}&pageSize=${pageSize}`, true);
 }
 
-export function getAllPostsWithBrandsAndProducts(page: Number = 1, pageSize: Number = 25): Promise<PaginatedPostResponse<WatchExPostWithBrandAndProduct>> {
+export function getAllPostsWithBrandsAndProducts(page: number = 1, pageSize: number = 25): Promise<PaginatedPostResponse<WatchExPostWithBrandAndProduct>> {
     return get(`/posts/all-with-brands-and-products?page=${page}&pageSize=${pageSize}`, true);
 }
 
