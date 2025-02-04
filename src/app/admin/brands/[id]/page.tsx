@@ -6,8 +6,8 @@ import EditBrandForm from "./EditBrandForm";
 export default async ({ params }: { params: Promise<{ id: string }> }) => {
     const id = (await params).id;
     const [brand, products] = await Promise.all([
-        getBrand(parseInt(id)),
-        getProductsByBrand(parseInt(id))
+        getBrand(id),
+        getProductsByBrand(id)
     ]);
 
     return (
