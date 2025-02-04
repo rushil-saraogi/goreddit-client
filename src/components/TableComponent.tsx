@@ -1,17 +1,29 @@
+import { useRef, useEffect } from "react";
 import { Collection } from "@/types/Collection";
 import { Product } from "@/types/Product";
+import WatchExPost from "@/types/WatchExPost";
 import IconButton from "./IconButton";
 import { tableDateFormat } from "@/api/util";
+import { useInView } from "react-intersection-observer";
 
-type TableData = (Collection[] | Product[]) & { Actions?: React.ReactNode };
+type TableData = (Collection[] | Product[] | WatchExPost[]) & { Actions?: React.ReactNode };
 const ACTIONS_COLUMN = 'Actions';
 
-export default ({ data = [], onEdit, onDelete, onClick }: {
-        data?: TableData,
-        onEdit?: (id: number) => void,
-        onDelete?: (id: number) => void,
-        onClick?: (id: number) => void,
-    }) => {
+export default ({ data = [], onEdit, onDelete, onClick, onViewMore }: {
+    data?: TableData,
+    onEdit?: (id: number) => void,
+    onDelete?: (id: number) => void,
+    onClick?: (id: number) => void,
+    onViewMore?: () => void,
+}) => {
+    const { ref: infiniteScrollTriggerRef, inView } = useInView();
+
+    useEffect(() => {
+        if (inView && onViewMore) {
+            onViewMore();
+        }
+    }, [inView]);
+
     if (!data?.length) return (
         (
             <div className="p-4 text-gray-500 text-center bg-gray-400/10">No data available</div>
@@ -71,7 +83,7 @@ export default ({ data = [], onEdit, onDelete, onClick }: {
                     ))}
                 </tbody>
             </table>
-
+            <div ref={infiniteScrollTriggerRef}></div>
         </div>
     )
 }

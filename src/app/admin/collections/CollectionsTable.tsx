@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import Button from "@/components/Button";
+import Header from "@/components/Header";
 import TableComponent from "@/components/TableComponent";
 import { Collection } from "@/types/Collection";
 import { deleteCollection } from "@/api/collections";
@@ -28,10 +29,12 @@ export default ({ collections }: { collections: Collection[] }) => {
     }
 
     return (
-        <div className="flex flex-col gap-4">
-            <div className="flex justify-end">
-                <Button href="/admin/collections/new" type="secondary">Add Collection</Button>
-            </div>
+        <div className="flex flex-col gap-2">
+            <Header
+                actions={(
+                    <Button href="/admin/collections/new" type="secondary">Add Collection</Button>
+                )}
+            >Collections</Header>
             <TableComponent data={collections} onEdit={handleEditClick} onDelete={handleDeleteClick} />
         </div>
     )

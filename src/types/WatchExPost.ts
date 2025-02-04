@@ -8,3 +8,8 @@ export default interface WatchExPost {
     Created: string;
     Updated: string;
 }
+
+export interface WatchExPostWithBrandAndProduct extends WatchExPost {
+    Brands: string[];
+    Products: string[];
+}
