@@ -27,7 +27,7 @@ export default function BrandTable({ data }: { data: Brand[] }) {
       return;
     }
 
-    await mutation.mutate(id);
+    await mutation.mutate(id.toString());
     router.refresh();
   }
 
