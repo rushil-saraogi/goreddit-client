@@ -5,7 +5,7 @@ const environmentToApi: Record<string, string> = {
 
 const originToApi: Record<string, string> = {
     'http://localhost:3000': 'http://localhost:4000',
-    'https://goreddit-client-81758f319607.herokuapp.com/': 'https://goreddit-server-fce99feca526.herokuapp.com',
+    'https://goreddit-client-81758f319607.herokuapp.com': 'https://goreddit-server-fce99feca526.herokuapp.com',
 };
 
 export function getApiUrl() {
