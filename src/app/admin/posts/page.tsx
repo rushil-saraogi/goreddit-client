@@ -22,12 +22,10 @@ export default () => {
     const [page, setPage] = useState(1);
     const [posts, setPosts] = useState<WatchExPostWithBrandAndProduct[]>([]);
     const [total, setTotal] = useState(0);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [initialPageLoaded, setInitialPageLoaded] = useState(false);
 
     useEffect(() => {
-        setIsLoading(true);
-
         if (initialPageLoaded && posts.length >= total) {
             setIsLoading(false);
             return;
@@ -36,10 +34,13 @@ export default () => {
         getAllPostsWithBrandsAndProducts(page, PAGE_SIZE)
             .then(data => {
                 if (data.posts) {
-                    setPosts([...posts, ...data.posts]);
+                    setPosts(posts =>[...posts, ...data.posts]);
                 }
-                
-                setInitialPageLoaded(true);
+
+                if (!initialPageLoaded) {
+                    setInitialPageLoaded(true);
+                }
+
                 setTotal(data.total);
                 setIsLoading(false);
             });
