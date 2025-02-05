@@ -20,5 +20,5 @@ export function updateBrand(id: string, brand: CreateBrandRequest): Promise<Bran
 }
 
 export function deleteBrand(id: string): Promise<void> {
-    return del(`/brand/${id}/delete`);
+    return del(`/brand/${id}`);
 }

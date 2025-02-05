@@ -32,6 +32,11 @@ export default ({ data = [], onEdit, onDelete, onClick, onViewMore }: {
         )
     );
 
+    const callback = (id: number, cb: (id: number) => void) => (e: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLTableRowElement>) => {
+        e.stopPropagation();
+        cb(id);
+    }
+
     const tableDataArray = data
         .map((row) => ({
             ...row,
@@ -44,8 +49,8 @@ export default ({ data = [], onEdit, onDelete, onClick, onViewMore }: {
             return {
                 [ACTIONS_COLUMN]: (
                     <div className="flex gap-2">
-                        {onEdit && (<IconButton onClick={() => onEdit(row.ID)} icon="edit" tooltip="Edit" position="right" />)}
-                        {onDelete && (<IconButton onClick={() => onDelete(row.ID)} icon="delete" tooltip="Delete" position="right" />)}
+                        {onEdit && (<IconButton onClick={callback(row.ID, onEdit)} icon="edit" />)}
+                        {onDelete && (<IconButton onClick={callback(row.ID, onDelete)} icon="delete" />)}
                     </div>
                 ),
                 ...row,
@@ -74,7 +79,7 @@ export default ({ data = [], onEdit, onDelete, onClick, onViewMore }: {
 
                 <tbody className="divide-y divide-gray-200">
                     {tableDataArray.map((row, i) => (
-                        <tr key={i} className={`${onClick ? 'cursor-pointer hover:bg-gray-500/5' : ''}`} onClick={() => onClick?.(data[i].ID)}>
+                        <tr key={i} className={`${onClick ? 'cursor-pointer hover:bg-gray-500/5' : ''}`} onClick={onClick ? callback(data[i].ID, onClick) : () => {}}>
                             {row.map((cell, i) => (
                                 <td key={i} className="px-4 sm:px-6 py-3 whitespace-nowrap text-gray-700 max-w-80 overflow-hidden overflow-ellipsis">
                                     {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}

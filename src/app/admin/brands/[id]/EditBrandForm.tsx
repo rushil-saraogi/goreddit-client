@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import InputGroup from "@/components/InputGroup"
 import Label from "@/components/Label";
@@ -9,7 +10,8 @@ import Alert from "@/components/Alert";
 import Brand from "@/types/Brand";
 import { createBrand, updateBrand, CreateBrandRequest } from "@/api/brands";
 
-export default ({ brand }: { brand: Brand }) => {
+export default ({ brand }: { brand: Brand | null }) => {
+    const router = useRouter();
     const [Name, setName] = useState(brand?.Name || "");
     const [PriceRangeLower, setPriceRangeLower] = useState<string>(brand?.PriceRangeLower.toString() || '0');
     const [PriceRangeUpper, setPriceRangeUpper] = useState<string>(brand?.PriceRangeUpper.toString() || '0');
@@ -29,7 +31,8 @@ export default ({ brand }: { brand: Brand }) => {
             return;
         }
 
-        await createBrand(getBrandObject());
+        const brandId = await createBrand(getBrandObject());
+        router.push(`/admin/brands/${brandId}`);
     }
 
     const mutation = useMutation({
