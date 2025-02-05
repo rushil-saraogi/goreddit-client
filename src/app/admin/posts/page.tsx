@@ -23,6 +23,7 @@ export default () => {
     const [posts, setPosts] = useState<WatchExPostWithBrandAndProduct[]>([]);
     const [total, setTotal] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
+    const [isReprocessing, setIsReprocessing] = useState(false);
     const [initialPageLoaded, setInitialPageLoaded] = useState(false);
 
     useEffect(() => {
@@ -63,9 +64,12 @@ export default () => {
     }));
 
     const handleReprocess = () => {
+        setIsReprocessing(true);
+
         reprocessPosts()
             .then((res) => {
                 alert(`${res.rowsAffected} new tags added`);
+                setIsReprocessing(false);
             });
     }
 
@@ -73,7 +77,7 @@ export default () => {
         <div>
             <Header
                 actions={(
-                    <Button type="secondary" onClick={handleReprocess}>Reprocess posts</Button>
+                    <Button type="secondary" onClick={handleReprocess} loading={isReprocessing}>Reprocess posts</Button>
                 )}
             >
                     Posts <span className="text-gray-400">({total} total)</span>
