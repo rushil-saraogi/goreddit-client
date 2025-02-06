@@ -11,12 +11,15 @@ import Alert from "@/components/Alert";
 import { Product } from "@/types/Product";
 import { Category } from "@/types/Category";
 import Dropdown from "@/components/Dropdown";
+import { formatWatchExPostForTable } from "@/util/post";
 import { addProductCategory, removeProductCategory } from "@/api/products";
 import Brand from "@/types/Brand";
 import Pill from "@/components/Pill";
 import { MOVEMENT_TYPES, CRYSTAL_TYPES, DIAL_COLORS, CASE_MATERIALS } from "./constants";
+import WatchExPost from "@/types/WatchExPost";
+import TableComponent from "@/components/TableComponent";
 
-export default ({ product, categories, brands }: { product?: Product | null, categories: Category[], brands: Brand[] }) => {
+export default ({ product, categories, brands, posts = [] }: { product?: Product | null, categories: Category[], brands: Brand[], posts: WatchExPost[] }) => {
     const brandNames = brands.map((brand) => brand.Name);
     const searchParams = useSearchParams();
     const brandIDParam = searchParams.get('brandID');
@@ -161,23 +164,32 @@ export default ({ product, categories, brands }: { product?: Product | null, cat
 
             {
                 product && (
-                    <div className="p-4 border border-gray-200 rounded-lg">
-                        <div className="font-semibold">Categories</div>
+                    <>
+                        <div className="p-4 border border-gray-200 rounded-lg">
+                            <div className="font-semibold">Categories</div>
 
-                        <div className="flex gap-3 flex-wrap mt-4">
-                            {
-                                categories.map((category) => (
-                                    <Pill
-                                        key={category.ID}
-                                        onClick={() => hanldeCategoryClick(category.ID)}
-                                        type={Categories.find((c) => c.ID === category.ID) ? "success" : "default"}
-                                    >
-                                        {category.Name}
-                                    </Pill>
-                                ))
-                            }
+                            <div className="flex gap-3 flex-wrap mt-4">
+                                {
+                                    categories.map((category) => (
+                                        <Pill
+                                            key={category.ID}
+                                            onClick={() => hanldeCategoryClick(category.ID)}
+                                            type={Categories.find((c) => c.ID === category.ID) ? "success" : "default"}
+                                        >
+                                            {category.Name}
+                                        </Pill>
+                                    ))
+                                }
+                            </div>
                         </div>
-                    </div>
+
+                        <div className="p-4 border border-gray-200 rounded-lg">
+                            <div className="font-semibold">Posts</div>
+
+                            <TableComponent data={posts} />
+                        </div>
+                    </>
+
                 )
             }
         </div>

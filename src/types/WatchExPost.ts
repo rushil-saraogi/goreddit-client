@@ -5,6 +5,9 @@ export default interface WatchExPost {
     Username: string;
     Thumbnail: string;
     PostTime: number;
+    PostURL: string;
+    AuthorTransactionCount: number;
+    PriceRange: string;
     Created: string;
     Updated: string;
 }

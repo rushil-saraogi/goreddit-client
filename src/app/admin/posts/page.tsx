@@ -5,18 +5,12 @@ import { getAllPostsWithBrandsAndProducts } from "@/api/posts";
 import Header from "@/components/Header";
 import TableComponent from "@/components/TableComponent";
 import Button from "@/components/Button";
-import Tag from "@/components/Tag";
+import { formatWatchExPostForTable } from "@/util/post";
 import { WatchExPostWithBrandAndProduct, WatchExPostWithBrandAndProductTable } from "@/types/WatchExPost";
 import Loader from "@/components/Loader";
 import { reprocessPosts } from "@/api/posts";
 
 const PAGE_SIZE = 25;
-
-const Tags = ({ tags, bg }: { tags: string[], bg: string }) => (
-    <div className="flex flex-wrap gap-1">
-        {tags.map(tag => <Tag key={tag} classes={bg}>{tag}</Tag>)}
-    </div>
-)
 
 export default () => {
     const [page, setPage] = useState(1);
@@ -51,17 +45,7 @@ export default () => {
         setPage(page + 1);
     };
 
-    const formattedData: WatchExPostWithBrandAndProductTable[]  = posts.map(post => ({
-        Brands: (<Tags bg="bg-teal-500" tags={post.Brands} />),
-        Products: (<Tags bg="bg-pink-500" tags={post.Products} />),
-        Title: post.Title,
-        ID: post.ID,
-        Username: post.Username,
-        Thumbnail: post.Thumbnail,
-        PostTime: post.PostTime,
-        Created: post.Created,
-        Updated: post.Updated,
-    }));
+    const formattedData: WatchExPostWithBrandAndProductTable[]  = formatWatchExPostForTable(posts);
 
     const handleReprocess = () => {
         setIsReprocessing(true);

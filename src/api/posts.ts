@@ -20,11 +20,11 @@ export function getAllPostsWithBrandsAndProducts(page: number = 1, pageSize: num
     return get(`/posts/all-with-brands-and-products?page=${page}&pageSize=${pageSize}`, true);
 }
 
-export function getPostsForBrand(brandId: string) {
+export function getPostsForBrand(brandId: string): Promise<WatchExPost[]> {
     return get(`/brand/${brandId}/posts`);
 }
 
-export function getPostsForProduct(productId: string) {
+export function getPostsForProduct(productId: string): Promise<WatchExPost[]> {
     return get(`/product/${productId}/posts`);
 }
 
