@@ -21,7 +21,7 @@ export default async function Latest() {
           <h2 className="mt-2">Latest posts</h2>
         </div>
         {posts.map((post: WatchExPostType) => (
-          <PostCard post={post} key={post.ID} />
+          <PostCard post={post} key={post.ID} onClick={() => {}} />
         ))}
       </main>
     </div>
