@@ -12,7 +12,7 @@ export function getLatestPosts(): Promise<WatchExPost[]> {
     return get('/posts/latest', true);
 }
 
-export function getPostById(id: string): Promise<WatchExPost> {
+export function getPostById(id: string): Promise<WatchExPostWithBrandAndProduct> {
     return get(`/post/${id}`, true);
 }
 
