@@ -15,7 +15,7 @@ export default ({ collections }: { collections: Collection[] }) => {
         mutationFn: deleteCollection
     })
 
-    const handleDeleteClick = async (collectionId: number) => {
+    const handleDeleteClick = async (collectionId: string) => {
         if (!confirm('Are you sure you want to delete this collection?')) {
             return;
         }
@@ -24,7 +24,7 @@ export default ({ collections }: { collections: Collection[] }) => {
         router.refresh();
     }
 
-    const handleEditClick = (collectionId: number) => {
+    const handleEditClick = (collectionId: string) => {
         router.push(`/admin/collections/${collectionId}`);
     }
 

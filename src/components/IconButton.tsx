@@ -1,9 +1,10 @@
 import Tooltip from "./Tooltip"
 import { TooltipPosition } from "./Tooltip"
+import { BaseSyntheticEvent } from "react"
 
 type ButtonType = "success" | "error" | "warning" | "info";
 
-export default ({ icon, tooltip = "", onClick, type, position = "bottom" }: { icon: string, tooltip?: string, onClick: () => void, type?: ButtonType, position?: TooltipPosition }) => {
+export default ({ icon, tooltip = "", onClick, type, position = "bottom" }: { icon: string, tooltip?: string, onClick: (e: BaseSyntheticEvent) => void, type?: ButtonType, position?: TooltipPosition }) => {
     const iconClasses: Record<ButtonType, string> = {
         success: "text-green-500",
         error: "text-red-500",

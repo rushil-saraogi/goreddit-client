@@ -18,7 +18,7 @@ export function updateCollection(id: number, data: CreateCollectionRequest): Pro
     return put(`/collection/${id}`, data);
 }
 
-export function deleteCollection(id: number): Promise<void> {
+export function deleteCollection(id: string): Promise<void> {
     return del(`/collection/${id}`);
 }
 

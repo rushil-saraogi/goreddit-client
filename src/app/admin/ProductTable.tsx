@@ -14,7 +14,7 @@ export default function ProductTable({ data, brandID }: { data: Product[], brand
     mutationFn: deleteProduct
   })
 
-  const handleEditClick = (id: number) => {
+  const handleEditClick = (id: string) => {
     router.push(`/admin/products/${id}`);
   }
 
@@ -22,7 +22,7 @@ export default function ProductTable({ data, brandID }: { data: Product[], brand
     router.push(`/admin/products/new${brandID ? `?brandID=${brandID}` : ''}`);
   }
 
-  const handleDeleteClick = async (id: number) => {
+  const handleDeleteClick = async (id: string) => {
     if (!confirm('Are you sure you want to delete this product?')) {
       return;
     }

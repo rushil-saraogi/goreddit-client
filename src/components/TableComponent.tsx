@@ -6,6 +6,7 @@ import { Product } from "@/types/Product";
 import WatchExPost, { WatchExPostWithBrandAndProductTable } from "@/types/WatchExPost";
 import IconButton from "./IconButton";
 import { tableDateFormat } from "@/api/util";
+import { BaseSyntheticEvent } from "react";
 import { useInView } from "react-intersection-observer";
 
 type TableData = (Collection[] | Product[] | WatchExPost[] | WatchExPostWithBrandAndProductTable[]) & { Actions?: React.ReactNode };
@@ -13,9 +14,9 @@ const ACTIONS_COLUMN = 'Actions';
 
 export default ({ data = [], onEdit, onDelete, onClick, onViewMore }: {
     data?: TableData,
-    onEdit?: (id: number) => void,
-    onDelete?: (id: number) => void,
-    onClick?: (id: number) => void,
+    onEdit?: (id: string) => void,
+    onDelete?: (id: string) => void,
+    onClick?: (id: string) => void,
     onViewMore?: () => void,
 }) => {
     const { ref: infiniteScrollTriggerRef, inView } = useInView();
@@ -32,7 +33,7 @@ export default ({ data = [], onEdit, onDelete, onClick, onViewMore }: {
         )
     );
 
-    const callback = (id: string, cb: (id: string) => void) => (e: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLTableRowElement>) => {
+    const callback = (id: string, cb: (id: string) => void) => (e: BaseSyntheticEvent) => {
         e.stopPropagation();
         cb(id);
     }
@@ -49,8 +50,8 @@ export default ({ data = [], onEdit, onDelete, onClick, onViewMore }: {
             return {
                 [ACTIONS_COLUMN]: (
                     <div className="flex gap-2">
-                        {onEdit && (<IconButton onClick={callback(row.ID, onEdit)} icon="edit" />)}
-                        {onDelete && (<IconButton onClick={callback(row.ID, onDelete)} icon="delete" />)}
+                        {onEdit && (<IconButton onClick={callback(row.ID.toString(), onEdit)} icon="edit" />)}
+                        {onDelete && (<IconButton onClick={callback(row.ID.toString(), onDelete)} icon="delete" />)}
                     </div>
                 ),
                 ...row,
@@ -79,7 +80,7 @@ export default ({ data = [], onEdit, onDelete, onClick, onViewMore }: {
 
                 <tbody className="divide-y divide-gray-200">
                     {tableDataArray.map((row, i) => (
-                        <tr key={i} className={`${onClick ? 'cursor-pointer hover:bg-gray-500/5' : ''}`} onClick={onClick ? callback(data[i].ID, onClick) : () => {}}>
+                        <tr key={i} className={`${onClick ? 'cursor-pointer hover:bg-gray-500/5' : ''}`} onClick={onClick ? callback(data[i].ID.toString(), onClick) : () => {}}>
                             {row.map((cell, i) => (
                                 <td key={i} className="px-4 sm:px-6 py-3 whitespace-nowrap text-gray-700 max-w-80 overflow-hidden overflow-ellipsis">
                                     {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}

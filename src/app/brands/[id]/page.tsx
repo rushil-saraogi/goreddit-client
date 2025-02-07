@@ -49,7 +49,7 @@ export default async ({ params }: { params: Promise<{ id: string }> }) => {
         )}
         {posts?.length &&
           posts.map((post: WatchExPostType) => (
-            <PostCard post={post} key={post.ID} />
+            <PostCard post={post} key={post.ID} onClick={() => {}} />
           ))}
       </main>
     </div>

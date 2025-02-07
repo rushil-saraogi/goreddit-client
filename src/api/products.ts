@@ -25,7 +25,7 @@ export function updateProduct(id: number, product: CreateProductRequest): Promis
     return put(`/product/${id}`, product);
 }
 
-export function deleteProduct(id: number): Promise<void> {
+export function deleteProduct(id: string): Promise<void> {
     return del(`/product/${id}`);
 }
 

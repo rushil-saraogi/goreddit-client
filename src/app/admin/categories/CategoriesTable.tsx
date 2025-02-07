@@ -10,7 +10,7 @@ import Header from "@/components/Header";
 export default ({ categories }: { categories: Category[] }) => {
     const router = useRouter();
 
-    const handleEditClick = (id: number) => {
+    const handleEditClick = (id: string) => {
         router.push(`/admin/categories/${id}`);
     }
 
