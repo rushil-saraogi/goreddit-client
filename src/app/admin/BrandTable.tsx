@@ -14,15 +14,15 @@ export default function BrandTable({ data }: { data: Brand[] }) {
     mutationFn: deleteBrand
   })
 
-  const handleEditClick = (id: number) => {
+  const handleEditClick = (id: string) => {
     router.push(`/admin/brands/${id}`);
   }
 
-  const handleRowClick = (id: number) => {
+  const handleRowClick = (id: string) => {
     router.push(`/admin/brands/${id}`);
   }
 
-  const handleDeleteClick = async (id: number) => {
+  const handleDeleteClick = async (id: string) => {
     if (!confirm('Are you sure you want to delete this brand?')) {
       return;
     }
