@@ -68,7 +68,7 @@ export default () => {
             });
     }
 
-    const handlePostClick = (id: number) => {
+    const handlePostClick = (id: string) => {
         router.push(`/admin/posts/${id}`);
     }
 
