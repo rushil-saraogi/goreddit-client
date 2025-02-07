@@ -24,7 +24,7 @@ export function get(url: string, invalidateCache: boolean = false) {
 
     if (invalidateCache) {
         options.next = {
-            revalidate: 300
+            revalidate: 0
         }
     }
 

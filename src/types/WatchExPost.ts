@@ -1,5 +1,5 @@
 export default interface WatchExPost {
-    ID: number;
+    ID: string;
     Title: string;
     Content?: string;
     Username: string;

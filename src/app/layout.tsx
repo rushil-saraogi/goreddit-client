@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Source_Sans_3} from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 
 const SourceSans3 = Source_Sans_3({
@@ -27,7 +26,6 @@ export default function RootLayout({
         {children}
 
         <Navigation />
-        <Footer />
       </body>
     </html>
   );

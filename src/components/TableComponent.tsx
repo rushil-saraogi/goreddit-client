@@ -3,12 +3,12 @@
 import { useEffect } from "react";
 import { Collection } from "@/types/Collection";
 import { Product } from "@/types/Product";
-import { WatchExPostWithBrandAndProductTable } from "@/types/WatchExPost";
+import WatchExPost, { WatchExPostWithBrandAndProductTable } from "@/types/WatchExPost";
 import IconButton from "./IconButton";
 import { tableDateFormat } from "@/api/util";
 import { useInView } from "react-intersection-observer";
 
-type TableData = (Collection[] | Product[] | WatchExPostWithBrandAndProductTable[]) & { Actions?: React.ReactNode };
+type TableData = (Collection[] | Product[] | WatchExPost[] | WatchExPostWithBrandAndProductTable[]) & { Actions?: React.ReactNode };
 const ACTIONS_COLUMN = 'Actions';
 
 export default ({ data = [], onEdit, onDelete, onClick, onViewMore }: {
@@ -32,7 +32,7 @@ export default ({ data = [], onEdit, onDelete, onClick, onViewMore }: {
         )
     );
 
-    const callback = (id: number, cb: (id: number) => void) => (e: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLTableRowElement>) => {
+    const callback = (id: string, cb: (id: string) => void) => (e: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLTableRowElement>) => {
         e.stopPropagation();
         cb(id);
     }

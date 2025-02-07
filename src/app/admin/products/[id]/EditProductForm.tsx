@@ -11,7 +11,6 @@ import Alert from "@/components/Alert";
 import { Product } from "@/types/Product";
 import { Category } from "@/types/Category";
 import Dropdown from "@/components/Dropdown";
-import { formatWatchExPostForTable } from "@/util/post";
 import { addProductCategory, removeProductCategory } from "@/api/products";
 import Brand from "@/types/Brand";
 import Pill from "@/components/Pill";

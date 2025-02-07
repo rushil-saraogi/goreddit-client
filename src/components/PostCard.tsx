@@ -4,13 +4,14 @@ import Tag from "./Tag";
 import { removeEscapedAmpersands, isValidUrl } from "@/util/URL";
 import { cardDateFormat } from "@/util/date";
 
-export default ({ post }: { post: WatchExPost }) => {
+export default ({ post, onClick }: { post: WatchExPost, onClick: (id: string) => void }) => {
   const cleanedUrl = removeEscapedAmpersands(post.Thumbnail);
   const urlIsValid = isValidUrl(cleanedUrl);
 
   return (
-    <a
+    <div
       key={post.ID}
+      onClick={() => onClick(post.ID)}
       className="min-h-44 relative flex shadow-sm bg-black items-center justify-center after:content group rounded-lg relative cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight max-h-52 overflow-hidden"
     >
       {urlIsValid && (
@@ -34,6 +35,6 @@ export default ({ post }: { post: WatchExPost }) => {
       <div className="absolute p-8 transition h-full w-full flex items-center justify-center text-white text-sm text-center font-semibold bg-black bg-opacity-80 opacity-0 group-hover:opacity-100">
         {post.Title}
       </div>
-    </a>
+    </div>
   );
 };

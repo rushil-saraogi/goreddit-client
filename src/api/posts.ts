@@ -1,4 +1,4 @@
-import { get, post } from "./util";
+import { get, post, del } from "./util";
 import WatchExPost, {WatchExPostWithBrandAndProduct} from "@/types/WatchExPost";
 
 interface PaginatedPostResponse<T = WatchExPost> {
@@ -10,6 +10,10 @@ interface PaginatedPostResponse<T = WatchExPost> {
 
 export function getLatestPosts(): Promise<WatchExPost[]> {
     return get('/posts/latest', true);
+}
+
+export function getPostById(id: string): Promise<WatchExPost> {
+    return get(`/post/${id}`, true);
 }
 
 export function getAllPosts(page: number = 1, pageSize: number = 25): Promise<PaginatedPostResponse> {
@@ -30,4 +34,20 @@ export function getPostsForProduct(productId: string): Promise<WatchExPost[]> {
 
 export function reprocessPosts() {
     return post('/posts/reprocess', {});
+}
+
+export function createPostBrand(postId: string, brandId: number) {
+    return post(`/post/${postId}/brand/${brandId}`, {});
+}
+
+export function createPostProduct(postId: string, productId: number) {
+    return post(`/post/${postId}/product/${productId}`, {});
+}
+
+export function deletePostBrand(postId: string, brandId: number) {
+    return del(`/post/${postId}/brand/${brandId}`);
+}
+
+export function deletePostProduct(postId: string, productId: number) {
+    return del(`/post/${postId}/product/${productId}`);
 }
